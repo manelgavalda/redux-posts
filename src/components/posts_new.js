@@ -11,6 +11,7 @@ class PostsNew extends Component {
           type="text"
           {...field.input}
         />
+        <div style={{color: 'red'}}>{field.meta.error}</div>
       </div>
     )
   }
