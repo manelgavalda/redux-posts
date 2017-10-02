@@ -1,8 +1,15 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { Field, reduxForm} from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../actions';
+
+const FIELDS = {
+  title: {},
+  categories: {},
+  content: {}
+};
 
 class PostsNew extends Component {
   renderField(field) {
@@ -13,7 +20,7 @@ class PostsNew extends Component {
     return (
       <div className={className}>
         <label>{field.label}</label>
-        <input
+        <field.type
           className="form-control"
           type="text"
           {...field.input}
@@ -21,9 +28,7 @@ class PostsNew extends Component {
         <div className="text-help">
           {touched ? error : ''}
         </div>
-
-        </div>
-
+      </div>
     )
   }
 
@@ -40,16 +45,19 @@ class PostsNew extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title"
+          type="input"
           name="title"
           component={this.renderField}
         />
         <Field
           label="Categories"
+          type="input"
           name="categories"
           component={this.renderField}
         />
         <Field
           label="Posts Content"
+          type="textarea"
           name="content"
           component={this.renderField}
         />
@@ -63,17 +71,12 @@ class PostsNew extends Component {
 function validate(values) {
   const errors = {};
 
-  if(!values.title) {
-    errors.title = "Enter a title";
-  }
-  if(!values.categories) {
-    errors.categories = "Enter some  categories";
-  }
-  if(!values.content) {
-    errors.content = "Enter some content";
-  }
+  _.each(FIELDS, (type, field) => {
+    if(!values[field]) {
+      errors[field] = `Enter ${field}`;
+    }
+  });
 
-  // errors empty = validation ok
   return errors;
 }
 
