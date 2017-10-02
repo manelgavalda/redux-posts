@@ -9,7 +9,7 @@ const FIELDS = {
   title: {},
   categories: {},
   content: {}
-};
+}
 
 class PostsNew extends Component {
   renderField(field) {
