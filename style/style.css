@@ -5,9 +5,11 @@ form a {
 /* Animations */
 .fade-enter {
   right: 100px;
+  opacity: 0;
 }
 
 .fade-enter-active {
+  opacity: 1;
   right: 0px;
   transition: .5s ease-in all;
 }
