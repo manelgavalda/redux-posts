@@ -1,3 +1,13 @@
 form a {
   margin-left: 5px;
 }
+
+/* Animations */
+.fade-enter {
+  right: 100px;
+}
+
+.fade-enter-active {
+  right: 0px;
+  transition: .5s ease-in all;
+}
