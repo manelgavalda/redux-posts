@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPosts } from '../actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Modal from './modal';
 
 
 class PostsIndex extends Component {
@@ -43,6 +44,10 @@ class PostsIndex extends Component {
             {this.renderPosts()}
           </ReactCSSTransitionGroup>
         </ul>
+
+        {/*<Modal>*/}
+          {/*<h1>Prova</h1>*/}
+        {/*</Modal>*/}
       </div>
     )
   }
